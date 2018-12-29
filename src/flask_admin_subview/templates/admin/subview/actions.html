@@ -1,0 +1,13 @@
+{% macro form(actions, url) %}
+    {% if actions %}
+        <form id="action_form" action="{{ url }}" method="POST" style="display: none" onsubmit="return Subview.postForm(this);">
+            {% if action_form.csrf_token %}
+                {{ action_form.csrf_token }}
+            {% elif csrf_token %}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            {% endif %}
+            {{ action_form.url(value=return_url) }}
+            {{ action_form.action() }}
+        </form>
+    {% endif %}
+{% endmacro %}
