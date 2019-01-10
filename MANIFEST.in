@@ -1,2 +1,6 @@
+global-exclude *.pyc
 include README.rst
-recursive-include src/flask_admin_subview/static/ *
+include LICENSE
+recursive-include src/flask_admin_subview *.py
+recursive-include src/flask_admin_subview/static *
+recursive-include src/flask_admin_subview/templates *

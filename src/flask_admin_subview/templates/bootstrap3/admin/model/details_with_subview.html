@@ -1,0 +1,23 @@
+{% extends 'admin/model/details.html' %}
+
+{% block details_table %}
+    {{ super() }}
+    {% for subview in admin_view.subviews %}
+        <div class="row">
+            <div class="col-lg-12">
+                {% if subview.title %}
+                    <h4>{{ subview.title }}</h4>
+                {% endif %}
+                {% if subview.endpoint %}
+                    {% set inject=' data-inject-param="{}"'.format(subview.injectParam)
+                    if subview.injectParam else "" %}
+                    {% set attr=" " + subview.attr_formatted if subview.attr else "" %}
+                    <div data-type="subview" data-subview="{{ subview.endpoint }}"
+                            {{ inject|safe }}{{ attr|safe }}></div>
+                {% else %}
+                    <div data-type="subview" data-subview="{{ subview }}"></div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

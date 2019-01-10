@@ -33,7 +33,7 @@
 
         {% if actions %}
             <li class="dropdown">
-                {{ actionlib.dropdown(actions) }}
+                {{ subview_actionlib.dropdown(actions) }}
             </li>
         {% endif %}
 
@@ -154,35 +154,7 @@
 {% endblock %}
 
 {% block tail %}
-    {{ lib.form_js() }}
-    {{ actionlib.script(_gettext('Please select at least one record.'),
+    {{ subview_actionlib.script(_gettext('Please select at least one record.'),
                         actions,
                         actions_confirmation) }}
-
-
-    <script language="javascript">
-        (function ($) {
-            $('[data-role=tooltip]').tooltip({
-                html: true,
-                placement: 'bottom'
-            });
-        })(jQuery);
-
-        // Catch exception when closing dialog with <esc> key
-        // and prevent accidental deletions.
-        function safeConfirm(msg) {
-            try {
-                var isconfirmed = confirm(msg);
-                if (isconfirmed == true) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }
-            catch (err) {
-                return false;
-            }
-        }
-    </script>
 {% endblock %}

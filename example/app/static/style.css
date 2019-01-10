@@ -1,0 +1,9 @@
+.text-action-button {
+    text-decoration: underline;
+    color: #1a0dab;
+    display: inline-block;
+}
+
+button:hover .text-action-button {
+    text-decoration: none;
+}

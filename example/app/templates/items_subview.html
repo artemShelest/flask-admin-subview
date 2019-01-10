@@ -1,0 +1,8 @@
+{% extends "admin/subview/list.html" %}
+{% import 'admin/subview/row_actions.html' as row_actions with context %}
+{% import 'items_actions.html' as items_actionlib with context %}
+{% import "item_row_actions.html" as item_actions with context %}
+
+{% block actions %}
+    {{ items_actionlib.form(actions, get_url('.action_view')) }}
+{% endblock %}

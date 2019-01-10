@@ -1,0 +1,19 @@
+{% extends "admin/subview/list.html" %}
+
+{% block list_pager_top %}
+{% endblock %}
+
+{% block list_pager_bottom %}
+{% endblock %}
+
+{% block model_menu_bar %}
+    <ul class="nav nav-tabs actions-nav">
+
+        {% if actions %}
+            <li class="dropdown">
+                {{ actionlib.dropdown(actions) }}
+            </li>
+        {% endif %}
+
+    </ul>
+{% endblock %}

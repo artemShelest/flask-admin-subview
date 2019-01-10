@@ -1,0 +1,31 @@
+{% macro action_base(action, row_id, row, view, current_form, confirm=false, params=none) %}
+    <form class="icon" method="POST" action="{{ get_url(view) }}">
+        {{ current_form.id(value=get_pk_value(row)) }}
+        {{ current_form.url(value=return_url) }}
+        {% if current_form.csrf_token %}
+            {{ current_form.csrf_token }}
+        {% elif csrf_token %}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        {% endif %}
+        {% if params %}
+            {% for k,v in params.items() %}
+                <input type="hidden" name="{{ k }}" value="{{ v }}"/>
+            {% endfor %}
+        {% endif %}
+        {% if confirm %}
+            {% set confirm_part = "safeConfirm('" + _gettext(confirm) + "') && " %}
+        {% else %}
+            {% set confirm_part = "" %}
+        {% endif %}
+        {% set onclick = "return " + confirm_part + "Subview.postForm(this);" %}
+        <button onclick="{{ onclick|safe }}" title="{{ _gettext(action.title) }}">
+            {{ caller() }}
+        </button>
+    </form>
+{% endmacro %}
+
+{% macro delete_row(action, row_id, row) %}
+    {% call action_base(action, row_id, row, ".delete_view", delete_form, "Are you sure you want to delete this record?") %}
+        <span class="fa fa-trash glyphicon glyphicon-trash"></span>
+    {% endcall %}
+{% endmacro %}

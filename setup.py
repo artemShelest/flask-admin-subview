@@ -1,6 +1,6 @@
 import os
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 def file_path(name):
@@ -21,9 +21,15 @@ def desc():
 
 setup(
     name='Flask-Admin-Subview',
-    version='0.1.0dev1',
-    packages=find_packages('src'),
+    version='0.1.1',
+    packages=['flask_admin_subview'],
     package_dir={'': 'src'},
+    package_data={
+        'flask_admin_subview': [
+            'LICENSE',
+            'README.rst'
+        ]
+    },
     include_package_data=True,
     url='https://github.com/artemShelest/flask-admin-subview',
     license='MIT',
@@ -31,11 +37,12 @@ setup(
     author_email='artem.e.shelest@gmail.com',
     description='Embedded Flask-Admin list views.',
     long_description=desc(),
-    keywords=['flask-admin', 'list', 'view', 'embedded', 'nested'],
+    keywords=['flask-admin', 'list', 'view', 'embedded', 'nested', 'subview', 'one-to-many', 'relation',
+              'view relations'],
     install_requires=[
-        'flask-admin',
         'flask',
-        'wtforms'
+        'wtforms',
+        'flask-admin',
     ],
     platforms='any',
     classifiers=[

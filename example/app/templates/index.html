@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Subview Example Application</h3>
+            <p>This is a directory of persons holding some abstract items. There are some simple rules:</p>
+            <ul>
+                <li>each person's items are managed from the person's details view</li>
+                <li>item is bound to the owner (person) upon its creation, item owner cannot be changed</li>
+                <li>item can be borrowed from the owner who is holding it (list of "Available Items")</li>
+                <li>item can be returned to the owner by the holder (list of the "Holding items")</li>
+                <li>item can be deleted by the owner, regardless of the holder</li>
+            </ul>
+            <p>Below you can see some statistics on the directory. Click on the person's name to navigate to the details
+                page.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Top-5 Item Owners</h3>
+            <div data-type="subview" data-subview="/persons_subview/?sort=1&desc=1&page_size=5"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Top-5 Item Holders</h3>
+            <div data-type="subview" data-subview="/persons_subview/?sort=2&desc=1&page_size=5"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Top-5 Item Borrowers</h3>
+            <div data-type="subview" data-subview="/persons_subview/?sort=3&desc=1&page_size=5"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block tail_js %}
+    <script src="{{ admin_static.url(filename='vendor/jquery.min.js', v='2.1.4') }}" type="text/javascript"></script>
+    <script src="{{ admin_static.url(filename='bootstrap/{}/js/bootstrap.min.js'.format(Subview.template_mode), v='3.3.5') }}"
+            type="text/javascript"></script>
+    <script src="{{ admin_static.url(filename='vendor/moment.min.js', v='2.9.0') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ Subview.js_url() }}"></script>
+{% endblock %}

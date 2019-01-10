@@ -1,0 +1,17 @@
+{% macro return_item(action, row_id, row) %}
+    {% if row.owner_id != row.holder_id %}
+        {% call row_actions.action_base(action, row_id, row, ".return_view", action_form,
+        "Are you sure you want to return this item?") %}
+            <span class="text-action-button">[ Return Item ]</span>
+        {% endcall %}
+    {% else %}
+        <span class="text-muted">Own item</span>
+    {% endif %}
+{% endmacro %}
+
+{% macro borrow_item(action, row_id, row) %}
+    {% call row_actions.action_base(action, row_id, row, ".borrow_view", action_form,
+    params={'client_id': action_form.client_id.data} ) %}
+        <span class="text-action-button">[ Borrow Item ]</span>
+    {% endcall %}
+{% endmacro %}
