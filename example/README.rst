@@ -17,7 +17,7 @@ Installation
 
 .. code-block:: console
 
-        git clone https://github.com/artemShelest/flask-admin-subview.git
+    git clone https://github.com/artemShelest/flask-admin-subview.git
 
   or download and unpack zip from https://github.com/artemShelest/flask-admin-subview/archive/master.zip
 
@@ -25,14 +25,14 @@ Installation
 
 .. code-block:: console
 
-        cd flask-admin-subview
+    cd flask-admin-subview
 
 3. Create virtualenv (optional):
 
 .. code-block:: console
 
-        virtualenv venv
-        source venv/bin/activate
+    virtualenv venv
+    source venv/bin/activate
 
 4. Install requirements:
 
