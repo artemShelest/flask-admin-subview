@@ -1,7 +1,7 @@
 import os
 
 from flask import Blueprint, url_for
-from wtforms.widgets import HTMLString
+from markupsafe import Markup
 
 
 class Subview(object):
@@ -54,8 +54,8 @@ class Subview(object):
         app.jinja_env.globals[self.JINJA_NAME] = self
 
     def css_html(self):
-        return HTMLString('<link href="{}" rel="stylesheet">'.format(url_for("{}.static".format(self.bp.name),
-                                                                             filename=self.CSS_FILE_NAME)))
+        return Markup('<link href="{}" rel="stylesheet">'.format(url_for("{}.static".format(self.bp.name),
+                                                                         filename=self.CSS_FILE_NAME)))
 
     def js_url(self):
         return url_for("{}.static".format(self.bp.name), filename=self.JS_FILE_NAME)
