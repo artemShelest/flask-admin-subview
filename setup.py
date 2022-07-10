@@ -21,7 +21,7 @@ def desc():
 
 setup(
     name='Flask-Admin-Subview',
-    version='0.1.1',
+    version='0.1.2',
     packages=['flask_admin_subview'],
     package_dir={'': 'src'},
     package_data={
